@@ -4,13 +4,15 @@ module.exports = function createUpdatedCollection(collectionA, objectB) {
   let collectionAChanged = [];
   collectionA.forEach(i => {
     if(i.length > 1){
-      collectionAChanged.push(i.split('-')[1]);
+      for(let j = 0; j < i.split('-')[1]; j++){
+        collectionAChanged.push(i.split('-')[0]);
+      }
     }
     else {
       collectionAChanged.push(i);
     }
   })
-  
+
   let element = { };
   let collectionACount = [];
 
@@ -23,6 +25,7 @@ module.exports = function createUpdatedCollection(collectionA, objectB) {
     element.key = current;
     element.count = lastIndex - firstIndex + 1;
     collectionACount.push(element);
+    current = collectionAChanged[lastIndex + 1];
     element = {};
   }
 

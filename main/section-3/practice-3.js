@@ -13,6 +13,7 @@ module.exports = function createUpdatedCollection(collectionA, objectB) {
       element.key = current;
       element.count = lastIndex - firstIndex + 1;
       collectionACount.push(element);
+      current = collectionA[lastIndex + 1];
       element = {};
   }
 
